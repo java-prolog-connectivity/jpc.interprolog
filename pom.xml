@@ -9,12 +9,12 @@
     </parent>
     
 	<groupId>com.github.java-prolog-connectivity</groupId>
-	<artifactId>jpc-jpl</artifactId>
+	<artifactId>jpc-interprolog</artifactId>
 	<version>0.0.1-alpha-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>JPC_JPL</name>
-	<description>A JPC bridge for the JPL library</description>
-	<url>https://github.com/sergio-castro/jpc-jpl</url>
+	<name>JPC-InterProlog bridge</name>
+	<description>A JPC bridge for the InterProlog library</description>
+	<url>https://github.com/sergio-castro/jpc-interprolog</url>
   
     <licenses>
 	    <license>
@@ -24,9 +24,9 @@
     </licenses>
   
   <scm>
-    <connection>scm:git:git@github.com:sergio-castro/jpc.jpl.git</connection>
-    <developerConnection>scm:git:git@github.com:sergio-castro/jpc.jpl.git</developerConnection>
-    <url>git@github.com:sergio-castro/jpc.jpl.git</url>
+    <connection>scm:git:git@github.com:sergio-castro/jpc.interprolog.git</connection>
+    <developerConnection>scm:git:git@github.com:sergio-castro/jpc.interprolog.git</developerConnection>
+    <url>git@github.com:sergio-castro/jpc.interprolog.git</url>
   </scm>
     
     <developers>
@@ -102,20 +102,21 @@
 			<version>0.0.1-alpha-SNAPSHOT</version>
 		</dependency>
 		 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>com.github.java-prolog-connectivity</groupId>
 			<artifactId>jpc-examples</artifactId>
 			<version>0.0.1-alpha-SNAPSHOT</version>
 			 <type>test-jar</type>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
+
 
 		<dependency>
-			<groupId>jpl</groupId>
-			<artifactId>jpl</artifactId>
-			<version>3.1.4-alpha</version>
+			<groupId>com.declarativa.interprolog</groupId>
+			<artifactId>interprolog</artifactId>
+			<version>2.2a4</version>
 		</dependency>
-
+		
 	</dependencies>
 
 
