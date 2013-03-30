@@ -1,5 +1,7 @@
 package org.jpc.salt.interprolog;
 
+import static org.jpc.engine.prolog.PrologConstants.ANONYMOUS_VAR_NAME;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,6 +16,7 @@ import com.declarativa.interprolog.util.VariableNode;
 
 public class InterPrologTermWriter extends TermWriter<InterPrologTermWrapper> {
 
+	//different variables can have the same name in the case they are anonymous variable "_"
 	//private Map<VariableNode, String> variablesNames; //this will not work correctly since the InterProlog VariableNode does not implement hashCode
 	private Map<Integer, String> variablesNames; //creating the map with the code of the variable instead (until the bug in VariableNode is fixed)
 	private int varIdCounter;
@@ -65,9 +68,14 @@ public class InterPrologTermWriter extends TermWriter<InterPrologTermWrapper> {
 
 	@Override
 	public TermContentHandler startVariable(String name) {
-		VariableNode variable = getVariable(name);
-		if(variable == null) {
+		VariableNode variable;
+		if(name.equals(ANONYMOUS_VAR_NAME)) {
 			variable = createVariable(name);
+		} else {
+			variable = getVariable(name);
+			if(variable == null) {
+				variable = createVariable(name);
+			}
 		}
 		process(new InterPrologTermWrapper(new TermModel(variable), variablesNames));
 		return this;
