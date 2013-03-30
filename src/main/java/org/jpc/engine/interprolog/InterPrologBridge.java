@@ -11,13 +11,13 @@ public class InterPrologBridge {
 	public static InterPrologTermWrapper fromJpcToInterProlog(Term term) {
 		InterPrologTermWriter interPrologTermWriter = new InterPrologTermWriter();
 		term.read(interPrologTermWriter);
-		return interPrologTermWriter.getTerms().get(0);
+		return interPrologTermWriter.getFirst();
 	}
 	
 	public static Term fromInterPrologToJpc(InterPrologTermWrapper term) {
 		JpcTermWriter jpcTermWriter = new JpcTermWriter();
 		new InterPrologTermReader(term, jpcTermWriter).read();
-		return jpcTermWriter.getTerms().get(0);
+		return jpcTermWriter.getFirst();
 	}
 	
 }

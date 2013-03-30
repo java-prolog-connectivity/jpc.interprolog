@@ -7,25 +7,33 @@ import com.declarativa.interprolog.YAPSubprocessEngine;
 public class DefaultInterPrologYapConfiguration extends DefaultInterPrologConfiguration {
 
 	public static final String YAP = "yap";
-	public String YAP_BIN_DIRECTORY_PROPERTY_NAME = "YAP_BIN_DIRECTORY";
+	public static final String YAP_BIN_DIRECTORY_PROPERTY_NAME = "YAP_BIN_DIRECTORY";
 	
-	@Override
-	public boolean configure() {
-		setEngineBinDirectory(preferences.getVarOrThrow(YAP_BIN_DIRECTORY_PROPERTY_NAME));
-		return true;
+	public DefaultInterPrologYapConfiguration() {
+	}
+	
+	public DefaultInterPrologYapConfiguration(String engineBinDirectory) {
+		super(engineBinDirectory);
 	}
 	
 	@Override
+	public String getBinDirectoryPropertyOrThrow() {
+		return preferences.getVarOrThrow(YAP_BIN_DIRECTORY_PROPERTY_NAME);
+	}
+
+	@Override
 	protected PrologEngine basicCreatePrologEngine() {
-		if(isNative())
-			throw new UnsupportedOperationException("Impossible to create a native engine for " + getEngineName() + " using " + getLibraryName());
-		else
-			return new InterPrologEngine(new YAPSubprocessEngine(getEngineBinDirectory()));
+		return new InterPrologEngine(new YAPSubprocessEngine(getExecutableFullPath()));
 	}
 	
 	@Override
 	public String getEngineName() {
 		return YAP;
+	}
+
+	@Override
+	protected String getExecutableFileName() {
+		return "yap";
 	}
 	
 }

@@ -1,5 +1,11 @@
 package org.jpc.salt.interprolog;
 
+import static org.jpc.engine.prolog.PrologConstants.CONS_FUNCTOR;
+import static org.jpc.engine.prolog.PrologConstants.EMPTY_LIST_SYMBOL;
+
+import java.util.List;
+
+import org.jpc.JpcException;
 import org.jpc.salt.TermContentHandler;
 import org.jpc.salt.TermReader;
 import org.jpc.term.interprolog.InterPrologTermWrapper;
@@ -31,15 +37,38 @@ public class InterPrologTermReader extends TermReader {
 			String name = (String) interPrologTerm.getTermModel().node;
 			getContentHandler().startAtom(name);
 		} else if(interPrologTerm.isCompound()) {
-			getContentHandler().startCompound();
-			String name = (String) interPrologTerm.getTermModel().node;
-			getContentHandler().startAtom(name);
-			for(InterPrologTermWrapper child : interPrologTerm.getArgs()) {
-				read(child);
+			if(interPrologTerm.isList()) {
+				List<InterPrologTermWrapper> listChildren = interPrologTerm.listMembers();
+				if(listChildren.isEmpty())
+					throw new JpcException("Unexpected list size"); //if the list is empty the term should be an atom, not a compound.
+				readList(listChildren);
+			} else {
+				getContentHandler().startCompound();
+				String name = (String) interPrologTerm.getTermModel().node; //assuming the functors in TermModel objects representing compound terms are always Strings (no support for HiLog terms)
+				getContentHandler().startAtom(name);
+				for(InterPrologTermWrapper child : interPrologTerm.getArgs()) {
+					read(child);
+				}
+				getContentHandler().endCompound();
 			}
-			getContentHandler().endCompound();
 		} else
 			throw new RuntimeException("Unrecognized InterProlog term: " + interPrologTerm);
 	}
 
+	private void readList(List<InterPrologTermWrapper> list) {
+		readList(list, 0);
+	}
+	
+	private void readList(List<InterPrologTermWrapper> list, int index) {
+		if(list.size() == index)
+			getContentHandler().startAtom(EMPTY_LIST_SYMBOL);
+		else {
+			getContentHandler().startCompound();
+			getContentHandler().startAtom(CONS_FUNCTOR);
+			read(list.get(index));
+			readList(list, index+1);
+			getContentHandler().endCompound();
+		}
+	}
+	
 }

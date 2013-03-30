@@ -7,13 +7,28 @@ import com.xsb.interprolog.NativeEngine;
 
 public class DefaultInterPrologXsbConfiguration extends DefaultInterPrologConfiguration  {
 
-	public String XSB_BIN_DIRECTORY_PROPERTY_NAME = "XSB_BIN_DIRECTORY"; //environment variable with the path to the XSB executable.
+	public static final String XSB_BIN_DIRECTORY_PROPERTY_NAME = "XSB_BIN_DIRECTORY"; //environment variable with the path to the XSB executable.
 	public static final String XSB = "xsb";
+	private boolean isNative;
+	
+	public DefaultInterPrologXsbConfiguration() {
+	}
+	
+	public DefaultInterPrologXsbConfiguration(String engineBinDirectory) {
+		super(engineBinDirectory);
+	}
 	
 	@Override
-	public boolean configure() {
-		setEngineBinDirectory(preferences.getVarOrThrow(XSB_BIN_DIRECTORY_PROPERTY_NAME));
-		return true;
+	public String getBinDirectoryPropertyOrThrow() {
+		return preferences.getVarOrThrow(XSB_BIN_DIRECTORY_PROPERTY_NAME);
+	}
+	
+	public boolean isNative() {
+		return isNative;
+	}
+
+	public void setNative(boolean isNative) {
+		this.isNative = isNative;
 	}
 	
 	@Override
@@ -21,12 +36,17 @@ public class DefaultInterPrologXsbConfiguration extends DefaultInterPrologConfig
 		if(isNative())
 			return new InterPrologEngine(new NativeEngine(getEngineBinDirectory()));
 		else
-			return new InterPrologEngine(new XSBSubprocessEngine(getEngineBinDirectory()));
+			return new InterPrologEngine(new XSBSubprocessEngine(getExecutableFullPath()));
 	}
 	
 	@Override
 	public String getEngineName() {
 		return XSB;
+	}
+
+	@Override
+	protected String getExecutableFileName() {
+		return "xsb";
 	}
 
 }
