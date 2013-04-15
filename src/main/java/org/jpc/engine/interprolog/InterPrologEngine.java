@@ -39,11 +39,16 @@ public class InterPrologEngine extends AbstractPrologEngine {
 	}
 
 	@Override
-	public boolean shutdown() {
+	public boolean close() {
 		wrappedEngine.shutdown();
 		return true;
 	}
 
+	@Override
+	public boolean isCloseable() {
+		return true;
+	}
+	
 	@Override
 	public Term asTerm(String termString) {
 		String escapedTermString = new Atom(termString).toEscapedString();
