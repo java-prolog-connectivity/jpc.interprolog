@@ -23,6 +23,7 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 	private com.declarativa.interprolog.PrologEngine wrappedInterPrologEngine;
 	private TermModel interPrologQuery;
 	
+	
 	//public static final String ALL_VARIABLES = JPC_VAR_PREFIX + "ALL_VARIABLES";
 	
 	public InterPrologQuery(InterPrologEngine prologEngine, Term goal, boolean errorHandledQuery, Jpc context) {
@@ -86,4 +87,16 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 		return oneSolution;
 	}
 
+	
+	@Override
+	public boolean isAbortable() {
+		return true;
+	}
+	
+	@Override
+	protected void basicAbort() {
+		((InterPrologEngine)getPrologEngine()).getWrappedEngine().interrupt();
+		super.basicAbort();
+	}
+	
 }
