@@ -31,17 +31,10 @@ public class InterPrologEngine extends AbstractPrologEngine {
 	public PrologEngine getWrappedEngine() {
 		return wrappedEngine;
 	}
-	
-	@Override
-	public boolean interrupt() {
-		wrappedEngine.interrupt();
-		return true;
-	}
 
 	@Override
-	public boolean close() {
+	public void close() {
 		wrappedEngine.shutdown();
-		return true;
 	}
 
 	@Override
