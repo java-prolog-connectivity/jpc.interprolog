@@ -43,6 +43,11 @@ public class InterPrologEngine extends AbstractPrologEngine {
 	}
 	
 	@Override
+	public boolean isMultiThreaded() {
+		return false;
+	}
+	
+	@Override
 	public Term asTerm(String termString) {
 		String escapedTermString = new Atom(termString).toEscapedString();
 		String query = "read_atom_to_term(" + escapedTermString + ", " + READ_ATOM_TO_TERM_TERM  + ", "+ READ_ATOM_TO_TERM_VARS + ")";
