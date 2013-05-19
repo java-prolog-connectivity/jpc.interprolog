@@ -69,8 +69,8 @@ public class InterPrologEngine extends AbstractPrologEngine {
 	}
 	
 	@Override
-	public Query basicQuery(Term goal, boolean errorHandledQuery, Jpc context) {
-		return new InterPrologQuery(this, goal, errorHandledQuery, context);
+	public Query basicQuery(Term goal, Jpc context) {
+		return new InterPrologQuery(this, goal, context);
 	}
 
 }
