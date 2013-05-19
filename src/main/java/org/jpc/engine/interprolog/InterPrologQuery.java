@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import org.jpc.Jpc;
 import org.jpc.query.DeterministicPrologQuery;
+import org.jpc.query.QuerySolution;
 import org.jpc.term.Atom;
 import org.jpc.term.Compound;
 import org.jpc.term.ListTerm;
@@ -55,13 +56,12 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 	}
 	
 	@Override
-	public synchronized Map<String, Term> basicOneSolution() {
+	public synchronized QuerySolution basicOneSolution() {
 //		interPrologQuery = new TermModel("catch", new TermModel[]{
 //			new TermModel("is", new TermModel[]{new TermModel(new VariableNode(0)), new TermModel(new VariableNode(0))}),
 //			new TermModel(new VariableNode(1)),
 //			new TermModel("true")
 //		});
-		
 		
 		TermModel boundTerm = wrappedInterPrologEngine.deterministicGoal(interPrologQuery);
 		if(boundTerm == null)
@@ -84,9 +84,8 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 			Term term = InterPrologBridge.fromInterPrologToJpc(interPrologBinding.getValue());
 			oneSolution.put(interPrologBinding.getKey(), term);
 		}
-		return oneSolution;
+		return new QuerySolution(oneSolution, getPrologEngine(), getJpcContext());
 	}
-
 	
 	@Override
 	public boolean isAbortable() {
