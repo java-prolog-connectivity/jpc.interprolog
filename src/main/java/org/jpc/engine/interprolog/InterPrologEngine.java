@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.jpc.Jpc;
 import org.jpc.engine.prolog.AbstractPrologEngine;
+import org.jpc.error.PrologParsingException;
 import org.jpc.query.Query;
 import org.jpc.term.Atom;
 import org.jpc.term.Term;
@@ -48,10 +49,12 @@ public class InterPrologEngine extends AbstractPrologEngine {
 	}
 	
 	@Override
-	public Term asTerm(String termString) {
+	public Term asTerm(String termString, Jpc context) {
 		String escapedTermString = new Atom(termString).toEscapedString();
 		String query = "read_atom_to_term(" + escapedTermString + ", " + READ_ATOM_TO_TERM_TERM  + ", "+ READ_ATOM_TO_TERM_VARS + ")";
 		Object bindings[] = wrappedEngine.deterministicGoal(query, null);
+		if(bindings == null)
+			throw new PrologParsingException(termString);
 		TermModel queryTermModel = (TermModel) bindings[0];
 		TermModel queryAsTerm = (TermModel) queryTermModel.getChild(1);
 		TermModel variablesTuplesTerm = (TermModel) queryTermModel.getChild(2);
