@@ -44,6 +44,7 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 	
 	@Override
 	protected Term instrumentGoal(Term goal) {
+		goal = super.instrumentGoal(goal);
 		ListTerm mapVarsNames = new ListTerm();
 		for(Variable var : goal.getNonAnonymousVariables()) {
 			Compound varNameEntry = new Compound("=", asList(new Atom(var.getName()), var));
@@ -51,8 +52,8 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 		}
 		Term mapVarsNamesTerm = mapVarsNames.asTerm();
 		Compound dummyUnification = new Compound("=", asList(mapVarsNamesTerm, mapVarsNamesTerm));
-		Term superInstrumentGoal = super.instrumentGoal(goal);
-		return new Compound(",", asList(dummyUnification, superInstrumentGoal));
+		
+		return new Compound(",", asList(dummyUnification, goal));
 	}
 	
 	@Override
