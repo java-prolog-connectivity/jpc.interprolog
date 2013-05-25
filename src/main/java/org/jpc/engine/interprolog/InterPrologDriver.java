@@ -5,9 +5,9 @@ import java.io.File;
 import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
 import org.jpc.engine.prolog.PrologEngineInitializationException;
-import org.jpc.engine.prolog.driver.PrologEngineDriver;
+import org.jpc.engine.prolog.driver.AbstractPrologEngineDriver;
 
-public abstract class InterPrologDriver extends PrologEngineDriver {
+public abstract class InterPrologDriver extends AbstractPrologEngineDriver {
 
 	public static final String INTERPROLOG_LIBRARY_NAME = "InterProlog";
 
