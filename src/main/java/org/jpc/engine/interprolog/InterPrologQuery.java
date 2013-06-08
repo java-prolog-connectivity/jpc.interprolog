@@ -5,6 +5,7 @@ import static java.util.Arrays.asList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.NoSuchElementException;
 
 import org.jpc.Jpc;
 import org.jpc.query.DeterministicPrologQuery;
@@ -46,7 +47,7 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 	protected Term instrumentGoal(Term goal) {
 		goal = super.instrumentGoal(goal);
 		ListTerm mapVarsNames = new ListTerm();
-		for(Variable var : goal.getNonAnonymousVariables()) {
+		for(Variable var : goal.getNamedVariables()) {
 			Compound varNameEntry = new Compound("=", asList(new Atom(var.getName()), var));
 			mapVarsNames.add(varNameEntry);
 		}
@@ -57,7 +58,7 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 	}
 	
 	@Override
-	public synchronized QuerySolution basicOneSolution() {
+	protected QuerySolution basicOneSolutionOrThrow() {
 //		interPrologQuery = new TermModel("catch", new TermModel[]{
 //			new TermModel("is", new TermModel[]{new TermModel(new VariableNode(0)), new TermModel(new VariableNode(0))}),
 //			new TermModel(new VariableNode(1)),
@@ -66,7 +67,7 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 		
 		TermModel boundTerm = wrappedInterPrologEngine.deterministicGoal(interPrologQuery);
 		if(boundTerm == null)
-			return null;
+			throw new NoSuchElementException();
 		TermModel listUnification = (TermModel) ((TermModel)boundTerm.getChild(0)).getChild(1);
 		TermModel[] unifications = listUnification.flatList();
 		Map<Integer, String> variablesNames = new HashMap<>(); //a map associating to each InterProlog variable a name
