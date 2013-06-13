@@ -67,10 +67,12 @@ public abstract class InterPrologDriver extends AbstractPrologEngineDriver {
 	protected abstract String getExecutableFileName();
 	protected abstract String getDefaultBinDirectory();
 
+	@Override
 	public String getLicenseUrl() {
 		return "http://www.gnu.org/licenses/gpl-2.0.html";
 	}
 	
+	@Override
 	public String getSiteUrl() {
 		return "http://www.declarativa.pt/InterProlog/";
 	}

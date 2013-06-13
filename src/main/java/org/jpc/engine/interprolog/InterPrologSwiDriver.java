@@ -2,17 +2,14 @@ package org.jpc.engine.interprolog;
 
 import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
-import org.minitoolbox.OsUtil;
+import org.jpc.util.supportedengines.EngineDescription;
+import org.jpc.util.supportedengines.Swi;
 
 import com.declarativa.interprolog.SWISubprocessEngine;
 
 public class InterPrologSwiDriver extends InterPrologDriver {
-
-	public static final String SWI = "SWI";
-	public static final String SWI_BIN_DIRECTORY_PROPERTY_NAME = "SWI_BIN_DIRECTORY";
 	
-	private static final String EXECUTABLE_FILE_NAME_WINDOWS_OSX = "swipl"; //executable for windows or osx
-	private static final String EXECUTABLE_FILE_NAME_LINUX = "pl"; //executable for linux
+	private Swi engineDescription = new Swi();
 	
 	public InterPrologSwiDriver() {
 	}
@@ -31,7 +28,7 @@ public class InterPrologSwiDriver extends InterPrologDriver {
 	
 	@Override
 	public String getDefaultBinDirectory() {
-		return getPreferences().getVar(SWI_BIN_DIRECTORY_PROPERTY_NAME);
+		return getPreferences().getVar(Swi.SWI_BIN_DIRECTORY_PROPERTY_NAME);
 	}
 	
 	@Override
@@ -40,16 +37,13 @@ public class InterPrologSwiDriver extends InterPrologDriver {
 	}
 	
 	@Override
-	public String getEngineName() {
-		return SWI;
+	public EngineDescription getEngineDescription() {
+		return engineDescription;
 	}
 
 	@Override
 	protected String getExecutableFileName() {
-		if(OsUtil.osIsOsX() || OsUtil.osIsWindows())
-			return EXECUTABLE_FILE_NAME_WINDOWS_OSX;
-		else
-			return EXECUTABLE_FILE_NAME_LINUX;
+		return engineDescription.getExecutableFileName();
 	}
 	
 }

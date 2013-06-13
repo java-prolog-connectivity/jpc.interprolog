@@ -24,7 +24,7 @@ public class InterPrologTermReader extends TermReader {
 		read(interPrologTerm);
 	}
 	
-	public void read(InterPrologTermWrapper interPrologTerm) {
+	private void read(InterPrologTermWrapper interPrologTerm) {
 		if(interPrologTerm.isInteger()) {
 			Number number = (Number) interPrologTerm.getTermModel().node;
 			getContentHandler().startIntegerTerm(number.longValue());

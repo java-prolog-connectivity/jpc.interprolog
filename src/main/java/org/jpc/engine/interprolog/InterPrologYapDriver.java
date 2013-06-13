@@ -2,6 +2,8 @@ package org.jpc.engine.interprolog;
 
 import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
+import org.jpc.util.supportedengines.EngineDescription;
+import org.jpc.util.supportedengines.Yap;
 
 import com.declarativa.interprolog.YAPSubprocessEngine;
 
@@ -37,8 +39,8 @@ public class InterPrologYapDriver extends InterPrologDriver {
 	}
 	
 	@Override
-	public String getEngineName() {
-		return YAP;
+	public EngineDescription getEngineDescription() {
+		return new Yap();
 	}
 
 	@Override
