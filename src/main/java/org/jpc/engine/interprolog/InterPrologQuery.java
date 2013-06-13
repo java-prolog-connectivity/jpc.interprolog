@@ -52,8 +52,7 @@ public class InterPrologQuery extends DeterministicPrologQuery {
 			mapVarsNames.add(varNameEntry);
 		}
 		Term mapVarsNamesTerm = mapVarsNames.asTerm();
-		Compound dummyUnification = new Compound("=", asList(mapVarsNamesTerm, mapVarsNamesTerm));
-		
+		Compound dummyUnification = new Compound("=", asList(Variable.ANONYMOUS_VAR, mapVarsNamesTerm));
 		return new Compound(",", asList(dummyUnification, goal));
 	}
 	
