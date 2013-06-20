@@ -36,8 +36,8 @@ public abstract class InterPrologQuery extends DeterministicPrologQuery {
 	public static final String ALL_VARIABLES_TERM_MODEL = ALL_VARIABLES + "_TERM_MODEL";
 	public static final String INSTRUMENTED_GOAL = JPC_VAR_PREFIX + "INSTRUMENTED_GOAL";
 	
-	public InterPrologQuery(InterPrologEngine prologEngine, Term goal, Jpc context) {
-		super(prologEngine, goal, context);
+	public InterPrologQuery(InterPrologEngine prologEngine, Term goal, boolean errorHandledQuery, Jpc context) {
+		super(prologEngine, goal, errorHandledQuery, context);
 		wrappedInterPrologEngine = prologEngine.getWrappedEngine();
 	}
 

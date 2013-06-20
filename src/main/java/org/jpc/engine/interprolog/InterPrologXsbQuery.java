@@ -10,8 +10,8 @@ import org.jpc.term.Variable;
 
 public class InterPrologXsbQuery extends InterPrologQuery {
 
-	public InterPrologXsbQuery(InterPrologEngine prologEngine, Term goal, Jpc context) {
-		super(prologEngine, goal, context);
+	public InterPrologXsbQuery(InterPrologEngine prologEngine, Term goal, boolean errorHandledQuery, Jpc context) {
+		super(prologEngine, goal, errorHandledQuery, context);
 	}
 	
 	@Override

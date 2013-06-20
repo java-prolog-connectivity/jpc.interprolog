@@ -13,8 +13,8 @@ public class InterPrologSwiYapEngine extends InterPrologEngine {
 	}
 	
 	@Override
-	public Query basicQuery(Term goal, Jpc context) {
-		return new InterPrologSwiYapQuery(this, goal, context);
+	public Query basicQuery(Term goal, boolean errorHandledQuery, Jpc context) {
+		return new InterPrologSwiYapQuery(this, goal, errorHandledQuery, context);
 	}
 	
 }

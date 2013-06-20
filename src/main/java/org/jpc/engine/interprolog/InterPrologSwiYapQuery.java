@@ -10,8 +10,8 @@ import org.jpc.term.Variable;
 
 public class InterPrologSwiYapQuery extends InterPrologQuery {
 
-	public InterPrologSwiYapQuery(InterPrologEngine prologEngine, Term goal, Jpc context) {
-		super(prologEngine, goal, context);
+	public InterPrologSwiYapQuery(InterPrologEngine prologEngine, Term goal, boolean errorHandledQuery, Jpc context) {
+		super(prologEngine, goal, errorHandledQuery, context);
 	}
 	
 	@Override

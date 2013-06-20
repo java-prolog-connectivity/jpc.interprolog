@@ -13,8 +13,8 @@ public class InterPrologXsbEngine extends InterPrologEngine {
 	}
 	
 	@Override
-	public Query basicQuery(Term goal, Jpc context) {
-		return new InterPrologXsbQuery(this, goal, context);
+	public Query basicQuery(Term goal, boolean errorHandledQuery, Jpc context) {
+		return new InterPrologXsbQuery(this, goal, errorHandledQuery, context);
 	}
 	
 }
