@@ -33,7 +33,7 @@ public class InterPrologSwiDriver extends InterPrologDriver {
 	
 	@Override
 	protected PrologEngine basicCreatePrologEngine() {
-		return new InterPrologEngine(new SWISubprocessEngine(getExecutableFullPath()));
+		return new InterPrologSwiYapEngine(new SWISubprocessEngine(getExecutableFullPath()));
 	}
 	
 	@Override

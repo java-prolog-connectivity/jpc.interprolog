@@ -57,7 +57,7 @@ public abstract class InterPrologDriver extends AbstractPrologEngineDriver {
 		//logicEngine.query("import read_atom_to_term/3 from string").oneSolution(); //this would not work since read_atom_to_term/3 is needed for bootstrapping.
 		//it has to be done with the native API.
 		com.declarativa.interprolog.PrologEngine interPrologEngine = ((InterPrologEngine)logicEngine).getWrappedEngine();
-		interPrologEngine.command("import read_atom_to_term/3 from string");
+		interPrologEngine.command("(import read_atom_to_term/3 from string), (import closetail/1 from listutil)");
 	}
 	
 	protected String getExecutableFullPath() {

@@ -24,7 +24,7 @@ public class InterPrologXsbNativeDriver extends InterPrologXsbDriver {
 	
 	@Override
 	protected PrologEngine basicCreatePrologEngine() {
-		return new InterPrologEngine(new NativeEngine(getEngineBinDirectory()));
+		return new InterPrologXsbEngine(new NativeEngine(getEngineBinDirectory()));
 	}
 	
 	@Override

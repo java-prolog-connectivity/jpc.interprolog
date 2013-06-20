@@ -35,7 +35,7 @@ public class InterPrologYapDriver extends InterPrologDriver {
 
 	@Override
 	protected PrologEngine basicCreatePrologEngine() {
-		return new InterPrologEngine(new YAPSubprocessEngine(getExecutableFullPath()));
+		return new InterPrologSwiYapEngine(new YAPSubprocessEngine(getExecutableFullPath()));
 	}
 	
 	@Override

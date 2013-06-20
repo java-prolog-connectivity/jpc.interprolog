@@ -35,7 +35,7 @@ public class InterPrologXsbDriver extends InterPrologDriver  {
 	
 	@Override
 	protected PrologEngine basicCreatePrologEngine() {
-		return new InterPrologEngine(new XSBSubprocessEngine(getExecutableFullPath()));
+		return new InterPrologXsbEngine(new XSBSubprocessEngine(getExecutableFullPath()));
 	}
 	
 	@Override
