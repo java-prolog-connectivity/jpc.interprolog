@@ -1,7 +1,7 @@
 package org.jpc.engine.interprolog;
 
 import static java.util.Arrays.asList;
-import static org.jpc.JpcPreferences.JPC_VAR_PREFIX;
+import static org.jpc.JpcPreferences.JPC_ANON_VAR_PREFIX;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,9 +32,9 @@ public abstract class InterPrologQuery extends DeterministicPrologQuery {
 
 	private com.declarativa.interprolog.PrologEngine wrappedInterPrologEngine;
 
-	public static final String ALL_VARIABLES = JPC_VAR_PREFIX + "ALL_VARIABLES";
+	public static final String ALL_VARIABLES = JPC_ANON_VAR_PREFIX + "ALL_VARIABLES";
 	public static final String ALL_VARIABLES_TERM_MODEL = ALL_VARIABLES + "_TERM_MODEL";
-	public static final String INSTRUMENTED_GOAL = JPC_VAR_PREFIX + "INSTRUMENTED_GOAL";
+	public static final String INSTRUMENTED_GOAL = JPC_ANON_VAR_PREFIX + "INSTRUMENTED_GOAL";
 	
 	public InterPrologQuery(InterPrologEngine prologEngine, Term goal, boolean errorHandledQuery, Jpc context) {
 		super(prologEngine, goal, errorHandledQuery, context);
