@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 
 import org.jpc.Jpc;
 import org.jpc.query.DeterministicPrologQuery;
-import org.jpc.query.QuerySolution;
+import org.jpc.query.Solution;
 import org.jpc.term.Compound;
 import org.jpc.term.Term;
 import org.jpc.term.Variable;
@@ -48,7 +48,7 @@ public abstract class InterPrologQuery extends DeterministicPrologQuery {
 	 * The method getRawInterPrologVarDictionary() provides a common implementation for converting a dictionary term into a Java map. This method should be overridden if a term dictionary with another structure is used.
 	 */
 	@Override
-	protected QuerySolution basicOneSolutionOrThrow() {
+	protected Solution basicOneSolutionOrThrow() {
 		//InterPrologTermWrapper termWrapper = InterPrologBridge.fromJpcToInterProlog(getInstrumentedGoal());
 		//TermModel interPrologQuery = termWrapper.getTermModel();
 		Object[] results = wrappedInterPrologEngine.deterministicGoal(getInstrumentedGoal().toString(), "["+ALL_VARIABLES_TERM_MODEL+"]");
@@ -71,7 +71,7 @@ public abstract class InterPrologQuery extends DeterministicPrologQuery {
 			Term term = InterPrologBridge.fromInterPrologToJpc(interPrologBinding.getValue());
 			oneSolution.put(interPrologBinding.getKey(), term);
 		}
-		return new QuerySolution(oneSolution, getPrologEngine(), getJpcContext());
+		return new Solution(oneSolution, getPrologEngine(), getJpcContext());
 	}
 	
 	/**
