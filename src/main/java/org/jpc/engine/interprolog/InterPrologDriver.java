@@ -53,7 +53,7 @@ public abstract class InterPrologDriver extends AbstractPrologEngineDriver {
 	}
 	
 	@Override
-	public void onCreate(PrologEngine logicEngine) {
+	protected void onCreate(PrologEngine logicEngine) {
 		//logicEngine.query("import read_atom_to_term/3 from string").oneSolution(); //this would not work since read_atom_to_term/3 is needed for bootstrapping.
 		//it has to be done with the native API.
 		com.declarativa.interprolog.PrologEngine interPrologEngine = ((InterPrologEngine)logicEngine).getWrappedEngine();
