@@ -13,7 +13,7 @@ import org.jpc.query.DeterministicPrologQuery;
 import org.jpc.query.Solution;
 import org.jpc.term.Compound;
 import org.jpc.term.Term;
-import org.jpc.term.Variable;
+import org.jpc.term.Var;
 import org.jpc.term.interprolog.InterPrologTermWrapper;
 import org.jpc.util.PrologUtil;
 
@@ -109,9 +109,9 @@ public abstract class InterPrologQuery extends DeterministicPrologQuery {
 	protected Term instrumentParsedGoal(Term goal) {
 		goal = super.instrumentGoal(goal);
 		Term mapVarsNamesTerm = PrologUtil.varDictionaryTerm(goal);
-		Compound allVarsUnification = new Compound("=", asList(new Variable(ALL_VARIABLES), mapVarsNamesTerm));
+		Compound allVarsUnification = new Compound("=", asList(new Var(ALL_VARIABLES), mapVarsNamesTerm));
 		Term instrumentedGoal = new Compound(",", asList(allVarsUnification, goal));
-		Term buildTermModel = new Compound("buildTermModel", asList(new Variable(ALL_VARIABLES), new Variable(ALL_VARIABLES_TERM_MODEL)));
+		Term buildTermModel = new Compound("buildTermModel", asList(new Var(ALL_VARIABLES), new Var(ALL_VARIABLES_TERM_MODEL)));
 		return new Compound(",", asList(instrumentedGoal, buildTermModel));
 	}
 	

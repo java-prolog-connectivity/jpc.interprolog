@@ -6,7 +6,7 @@ import org.jpc.Jpc;
 import org.jpc.term.Atom;
 import org.jpc.term.Compound;
 import org.jpc.term.Term;
-import org.jpc.term.Variable;
+import org.jpc.term.Var;
 
 public class InterPrologXsbQuery extends InterPrologQuery {
 
@@ -17,11 +17,11 @@ public class InterPrologXsbQuery extends InterPrologQuery {
 	@Override
 	protected Term instrumentGoal(Term goal) {
 		goal = super.instrumentGoal(goal);
-		Term atomToTerm = new Compound("read_atom_to_term", asList(new Atom(goal.toString()), new Variable(INSTRUMENTED_GOAL), new Variable(ALL_VARIABLES)));
-		Term closedList = new Compound("closetail", asList(new Variable(ALL_VARIABLES)));
+		Term atomToTerm = new Compound("read_atom_to_term", asList(new Atom(goal.toString()), new Var(INSTRUMENTED_GOAL), new Var(ALL_VARIABLES)));
+		Term closedList = new Compound("closetail", asList(new Var(ALL_VARIABLES)));
 		Term atomToTermWithClosedListDict = new Compound(",", asList(atomToTerm, closedList));
-		Term buildTermModel = new Compound("buildTermModel", asList(new Variable(ALL_VARIABLES), new Variable(ALL_VARIABLES_TERM_MODEL)));
-		Term instrumentedGoal = new Compound(",", asList(atomToTermWithClosedListDict, new Variable(INSTRUMENTED_GOAL)));
+		Term buildTermModel = new Compound("buildTermModel", asList(new Var(ALL_VARIABLES), new Var(ALL_VARIABLES_TERM_MODEL)));
+		Term instrumentedGoal = new Compound(",", asList(atomToTermWithClosedListDict, new Var(INSTRUMENTED_GOAL)));
 		return new Compound(",", asList(instrumentedGoal, buildTermModel)); //buildTermModel should be the last predicate
 	}
 	
