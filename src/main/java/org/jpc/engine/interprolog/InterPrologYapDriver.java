@@ -1,7 +1,7 @@
 package org.jpc.engine.interprolog;
 
-import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
+import org.jpc.util.JpcPreferences;
 import org.jpc.util.supportedengines.EngineDescription;
 import org.jpc.util.supportedengines.Yap;
 
@@ -46,6 +46,11 @@ public class InterPrologYapDriver extends InterPrologDriver {
 	@Override
 	protected String getExecutableFileName() {
 		return EXECUTABLE_FILE_NAME;
+	}
+	
+	@Override
+	public boolean isDisabled() {
+		return true;
 	}
 	
 }

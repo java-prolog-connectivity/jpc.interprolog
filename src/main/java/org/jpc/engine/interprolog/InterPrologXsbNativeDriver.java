@@ -1,7 +1,7 @@
 package org.jpc.engine.interprolog;
 
-import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
+import org.jpc.util.JpcPreferences;
 
 import com.xsb.interprolog.NativeEngine;
 
@@ -32,4 +32,9 @@ public class InterPrologXsbNativeDriver extends InterPrologXsbDriver {
 		return super.getLibraryName() + "(Native)";
 	}
 
+	@Override
+	public boolean isDisabled() {
+		return true;
+	}
+	
 }

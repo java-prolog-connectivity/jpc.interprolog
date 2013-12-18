@@ -1,7 +1,7 @@
 package org.jpc.engine.interprolog;
 
-import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
+import org.jpc.util.JpcPreferences;
 import org.jpc.util.supportedengines.EngineDescription;
 import org.jpc.util.supportedengines.Swi;
 
@@ -46,4 +46,9 @@ public class InterPrologSwiDriver extends InterPrologDriver {
 		return engineDescription.getExecutableFileName();
 	}
 	
+	@Override
+	public boolean isDisabled() {
+		return true;
+	}
+
 }
