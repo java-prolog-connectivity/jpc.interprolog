@@ -16,7 +16,7 @@ import com.declarativa.interprolog.util.VariableNode;
 /**
  * InterProlog terms represent variables as (objects wrapping) integers. 
  * Transforming directly from JPC to InterProlog terms will loose the variables names.
- * Therefore this class wraps the original InterProlog term representation and adds a map keeping the name of term variables.
+ * Therefore this class wraps the original InterProlog term representation and adds a map keeping the id of term variables.
  * @author sergioc
  *
  */

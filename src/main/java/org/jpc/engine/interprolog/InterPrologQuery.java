@@ -1,7 +1,7 @@
 package org.jpc.engine.interprolog;
 
 import static java.util.Arrays.asList;
-import static org.jpc.JpcPreferences.JPC_ANON_VAR_PREFIX;
+import static org.jpc.util.JpcPreferences.JPC_ANON_VAR_PREFIX;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -77,7 +77,7 @@ public abstract class InterPrologQuery extends DeterministicPrologQuery {
 	/**
 	 * This method knows how to extract from an InterProlog term a dictionary binding variable names to terms.
 	 * By default, it is assumed that the dictionary term has a structure like: [f(Name,Var), ...]
-	 * Where f is an arbitrary functor name, Name is the name of a variable and Var the variable itself.
+	 * Where f is an arbitrary functor id, Name is the id of a variable and Var the variable itself.
 	 * @param varDictionaryTerm an instrumented query goal.
 	 * @return a dictionary binding variable names to terms.
 	 */

@@ -16,7 +16,7 @@ import com.declarativa.interprolog.util.VariableNode;
 
 public class InterPrologTermWriter extends TermWriter<InterPrologTermWrapper> {
 
-	//different variables can have the same name in the case they are anonymous variable "_"
+	//different variables can have the same id in the case they are anonymous variable "_"
 	//private Map<VariableNode, String> variablesNames; //this will not work correctly since the InterProlog VariableNode does not implement hashCode
 	private Map<Integer, String> variablesNames; //creating the map with the code of the variable instead (until the bug in VariableNode is fixed)
 	private int varIdCounter;

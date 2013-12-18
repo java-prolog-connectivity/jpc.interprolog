@@ -2,10 +2,10 @@ package org.jpc.engine.interprolog;
 
 import java.io.File;
 
-import org.jpc.JpcPreferences;
 import org.jpc.engine.prolog.PrologEngine;
 import org.jpc.engine.prolog.PrologEngineInitializationException;
 import org.jpc.engine.prolog.driver.AbstractPrologEngineDriver;
+import org.jpc.util.JpcPreferences;
 
 public abstract class InterPrologDriver extends AbstractPrologEngineDriver {
 

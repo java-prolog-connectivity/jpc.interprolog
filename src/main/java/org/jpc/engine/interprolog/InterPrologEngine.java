@@ -1,6 +1,6 @@
 package org.jpc.engine.interprolog;
 
-import static org.jpc.JpcPreferences.JPC_ANON_VAR_PREFIX;
+import static org.jpc.util.JpcPreferences.JPC_ANON_VAR_PREFIX;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +18,8 @@ import com.declarativa.interprolog.util.VariableNode;
 
 public abstract class InterPrologEngine extends AbstractPrologEngine {
 	
-	public static final String READ_ATOM_TO_TERM_TERM = JPC_ANON_VAR_PREFIX + "READ_ATOM_TO_TERM_TERM"; //the variable name used by the second argument of read_atom_to_term
-	public static final String READ_ATOM_TO_TERM_VARS = JPC_ANON_VAR_PREFIX + "READ_ATOM_TO_TERM_VARS"; //the variable name used by the third argument of read_atom_to_term
+	public static final String READ_ATOM_TO_TERM_TERM = JPC_ANON_VAR_PREFIX + "READ_ATOM_TO_TERM_TERM"; //the variable id used by the second argument of read_atom_to_term
+	public static final String READ_ATOM_TO_TERM_VARS = JPC_ANON_VAR_PREFIX + "READ_ATOM_TO_TERM_VARS"; //the variable id used by the third argument of read_atom_to_term
 	
 	
 	private PrologEngine wrappedEngine;
