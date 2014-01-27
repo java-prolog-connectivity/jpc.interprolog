@@ -1,0 +1,13 @@
+{
+engines: [
+  {
+    alias: "xsb",
+    factory: "org.jpc.engine.interprolog.InterPrologXsbDriver"
+  },
+  {
+    alias: "xsb_logtalk",
+    factory: "org.jpc.engine.interprolog.InterPrologXsbDriver",
+    profile: "org.jpc.engine.profile.LogtalkEngineProfile"
+  }
+]
+}
