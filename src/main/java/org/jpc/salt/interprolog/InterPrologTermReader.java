@@ -1,7 +1,7 @@
 package org.jpc.salt.interprolog;
 
 import static org.jpc.engine.prolog.PrologConstants.CONS_FUNCTOR;
-import static org.jpc.engine.prolog.PrologConstants.EMPTY_LIST_SYMBOL;
+import static org.jpc.engine.prolog.PrologConstants.NIL_SYMBOL;
 
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class InterPrologTermReader extends TermReader {
 	
 	private void readList(List<InterPrologTermWrapper> list, int index) {
 		if(list.size() == index)
-			getContentHandler().startAtom(EMPTY_LIST_SYMBOL);
+			getContentHandler().startAtom(NIL_SYMBOL);
 		else {
 			getContentHandler().startCompound();
 			getContentHandler().startAtom(CONS_FUNCTOR);
