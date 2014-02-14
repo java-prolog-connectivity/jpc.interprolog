@@ -2,8 +2,8 @@ package org.jpc.engine.interprolog;
 
 import org.jpc.engine.prolog.PrologEngine;
 import org.jpc.util.JpcPreferences;
-import org.jpc.util.supportedengines.EngineDescription;
-import org.jpc.util.supportedengines.Swi;
+import org.jpc.util.engine.supported.EngineDescription;
+import org.jpc.util.engine.supported.Swi;
 
 import com.declarativa.interprolog.SWISubprocessEngine;
 

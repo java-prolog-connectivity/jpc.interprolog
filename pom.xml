@@ -36,11 +36,13 @@
     </developers>
 
 	<dependencies>
-		<dependency>
+ 		 <dependency>
 			<groupId>com.github.java-prolog-connectivity</groupId>
 			<artifactId>jpc</artifactId>
 			<version>0.0.1-alpha-SNAPSHOT</version>
-		</dependency>
+			 <type>test-jar</type>
+			<scope>test</scope>
+		</dependency> 
 
 		<dependency>
 			<groupId>com.github.java-prolog-connectivity</groupId>

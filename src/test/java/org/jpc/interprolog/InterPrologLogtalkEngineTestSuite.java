@@ -1,6 +1,6 @@
 package org.jpc.interprolog;
 
-import org.jpc.LogtalkEngineTestSuite;
+import org.jpc.engine.logtalk.LogtalkEngineTestSuite;
 import org.jpc.examples.LogtalkExamplesTestSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
