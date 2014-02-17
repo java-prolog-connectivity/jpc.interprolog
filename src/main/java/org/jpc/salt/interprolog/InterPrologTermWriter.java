@@ -93,16 +93,6 @@ public class InterPrologTermWriter extends TermWriter<InterPrologTermWrapper> {
 	}
 	
 	@Override
-	public TermContentHandler startSoftJRef(Object ref) {
-		throw new UnsupportedOperationException(); //underlying Prolog engine does not support (non-symbolic) Java references.
-	}
-	
-	@Override
-	public TermContentHandler startWeakJRef(Object ref) {
-		throw new UnsupportedOperationException(); //underlying Prolog engine does not support (non-symbolic) Java references.
-	}
-	
-	@Override
 	protected TermBuilder<InterPrologTermWrapper> createCompoundBuilder() {
 		return new InterPrologTermBuilder();
 	}
