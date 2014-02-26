@@ -9,6 +9,8 @@ import org.junit.BeforeClass;
 public class InterPrologXsbPrologEngineTestSuite extends InterPrologPrologEngineTestSuite {
 	@BeforeClass
 	public static void setUp() {
-		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().forAlias("xsb")));
+		EngineConfigurationManager engineConfigurationManager = EngineConfigurationManager.createFromFile("jpc_xsb.settings");
+		EngineConfigurationManager.setDefault(engineConfigurationManager);
+		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().getNamedPrologEngine("xsb")));
 	}
 }

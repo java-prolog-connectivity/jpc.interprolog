@@ -9,6 +9,8 @@ import org.junit.BeforeClass;
 public class InterPrologXsbLogtalkEngineTestSuite extends InterPrologLogtalkEngineTestSuite {
 	@BeforeClass
 	public static void setUp() {
-		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().forAlias("xsb_logtalk")));
+		EngineConfigurationManager engineConfigurationManager = EngineConfigurationManager.createFromFile("jpc_xsb_logtalk.settings");
+		EngineConfigurationManager.setDefault(engineConfigurationManager);
+		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().getNamedPrologEngine("xsb_logtalk")));
 	}
 }

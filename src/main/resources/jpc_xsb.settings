@@ -1,0 +1,9 @@
+{
+engines: [
+  {
+    name: "xsb",
+    packageNames: [""],
+    factory: "org.jpc.engine.interprolog.InterPrologXsbDriver"
+  }
+]
+}
