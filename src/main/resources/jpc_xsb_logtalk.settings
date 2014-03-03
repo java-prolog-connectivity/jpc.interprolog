@@ -1,7 +1,7 @@
 {
 engines: [
   {
-    name: "xsb_logtalk",
+    id: "xsb_logtalk",
     packageNames: [""],
     factory: "org.jpc.engine.interprolog.InterPrologXsbDriver",
     profile: "org.jpc.engine.profile.LogtalkEngineProfile"

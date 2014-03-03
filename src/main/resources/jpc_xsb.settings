@@ -1,7 +1,7 @@
 {
 engines: [
   {
-    name: "xsb",
+    id: "xsb",
     packageNames: [""],
     factory: "org.jpc.engine.interprolog.InterPrologXsbDriver"
   }

@@ -11,6 +11,6 @@ public class InterPrologXsbLogtalkEngineTestSuite extends InterPrologLogtalkEngi
 	public static void setUp() {
 		EngineConfigurationManager engineConfigurationManager = EngineConfigurationManager.createFromFile("jpc_xsb_logtalk.settings");
 		EngineConfigurationManager.setDefault(engineConfigurationManager);
-		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().getNamedPrologEngine("xsb_logtalk")));
+		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().getPrologEngineById("xsb_logtalk")));
 	}
 }

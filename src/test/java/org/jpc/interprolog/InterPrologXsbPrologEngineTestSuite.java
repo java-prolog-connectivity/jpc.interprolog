@@ -11,6 +11,6 @@ public class InterPrologXsbPrologEngineTestSuite extends InterPrologPrologEngine
 	public static void setUp() {
 		EngineConfigurationManager engineConfigurationManager = EngineConfigurationManager.createFromFile("jpc_xsb.settings");
 		EngineConfigurationManager.setDefault(engineConfigurationManager);
-		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().getNamedPrologEngine("xsb")));
+		setPrologEngineProvider(new SimpleEngineProvider(EngineConfigurationManager.getDefault().getPrologEngineById("xsb")));
 	}
 }
