@@ -56,6 +56,7 @@
 			<groupId>com.github.java-prolog-connectivity</groupId>
 			<artifactId>jpc-examples</artifactId>
 			<version>0.0.1-alpha-SNAPSHOT</version>
+			<scope>test</scope>
 		</dependency>
 		 
  		<dependency>
