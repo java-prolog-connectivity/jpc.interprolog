@@ -1,9 +1,9 @@
 {
 engines: [
   {
-    id: "xsb",
-    categoryNames: [""],
-    factory: "org.jpc.engine.interprolog.InterPrologXsbDriver"
+    "id": "xsb",
+    "categoryNames": [""],
+    "factory": "org.jpc.engine.interprolog.InterPrologXsbDriver"
   }
 ]
 }

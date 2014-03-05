@@ -1,10 +1,10 @@
 {
 engines: [
   {
-    id: "xsb_logtalk",
-    categoryNames: [""],
-    factory: "org.jpc.engine.interprolog.InterPrologXsbDriver",
-    profile: "org.jpc.engine.profile.LogtalkEngineProfile"
+    "id": "xsb_logtalk",
+    "categoryNames": [""],
+    "factory": "org.jpc.engine.interprolog.InterPrologXsbDriver",
+    "profile": "org.jpc.engine.profile.LogtalkEngineProfile"
   }
 ]
 }
