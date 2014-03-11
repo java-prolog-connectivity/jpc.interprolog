@@ -6,29 +6,24 @@ import org.jpc.engine.prolog.PrologEngine;
 import org.jpc.engine.prolog.PrologEngineInitializationException;
 import org.jpc.engine.prolog.driver.AbstractPrologEngineDriver;
 import org.jpc.util.JpcPreferences;
+import org.jpc.util.engine.supported.EngineDescription;
 
-public abstract class InterPrologDriver extends AbstractPrologEngineDriver {
+public abstract class InterPrologDriver extends AbstractPrologEngineDriver<InterPrologEngine> {
 
 	public static final String INTERPROLOG_LIBRARY_NAME = "InterProlog";
 
 	private String engineBinDirectory; //should be set by the configure method of the non-abstract descendant classes
-	
-	public InterPrologDriver() {
-		setEngineBinDirectory(getDefaultBinDirectory());
+
+	public InterPrologDriver(EngineDescription engineDescription, JpcPreferences preferences) {
+		this(engineDescription, null, preferences);
 	}
 	
-	public InterPrologDriver(JpcPreferences preferences) {
-		super(preferences);
-		setEngineBinDirectory(getDefaultBinDirectory());
-	}
-	
-	public InterPrologDriver(String engineBinDirectory) {
-		setEngineBinDirectory(engineBinDirectory);
-	}
-	
-	public InterPrologDriver(JpcPreferences preferences, String engineBinDirectory) {
-		this(preferences);
-		setEngineBinDirectory(engineBinDirectory);
+	public InterPrologDriver(EngineDescription engineDescription, String engineBinDirectory, JpcPreferences preferences) {
+		super(engineDescription, preferences);
+		if(engineBinDirectory != null)
+			setEngineBinDirectory(engineBinDirectory);
+		else
+			setEngineBinDirectory(getDefaultBinDirectory());
 	}
 	
 	public String getEngineBinDirectory() {

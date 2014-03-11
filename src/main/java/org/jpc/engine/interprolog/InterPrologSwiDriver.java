@@ -1,29 +1,22 @@
 package org.jpc.engine.interprolog;
 
-import org.jpc.engine.prolog.PrologEngine;
 import org.jpc.util.JpcPreferences;
-import org.jpc.util.engine.supported.EngineDescription;
 import org.jpc.util.engine.supported.Swi;
 
 import com.declarativa.interprolog.SWISubprocessEngine;
 
 public class InterPrologSwiDriver extends InterPrologDriver {
 	
-	private Swi engineDescription = new Swi();
-	
 	public InterPrologSwiDriver() {
-	}
-	
-	public InterPrologSwiDriver(String engineBinDirectory) {
-		super(engineBinDirectory);
+		this(null, new JpcPreferences());
 	}
 
-	public InterPrologSwiDriver(JpcPreferences preferences) {
-		super(preferences);
+	public InterPrologSwiDriver(String engineBinDirectory) {
+		this(engineBinDirectory, new JpcPreferences());
 	}
 	
-	public InterPrologSwiDriver(JpcPreferences preferences, String engineBinDirectory) {
-		super(preferences, engineBinDirectory);
+	public InterPrologSwiDriver(String engineBinDirectory, JpcPreferences preferences) {
+		super(new Swi(), engineBinDirectory, preferences);
 	}
 	
 	@Override
@@ -32,18 +25,13 @@ public class InterPrologSwiDriver extends InterPrologDriver {
 	}
 	
 	@Override
-	protected PrologEngine basicCreatePrologEngine() {
+	protected InterPrologEngine basicCreatePrologEngine() {
 		return new InterPrologSwiYapEngine(new SWISubprocessEngine(getExecutableFullPath()));
-	}
-	
-	@Override
-	public EngineDescription getEngineDescription() {
-		return engineDescription;
 	}
 
 	@Override
 	protected String getExecutableFileName() {
-		return engineDescription.getExecutableFileName();
+		return ((Swi)getEngineDescription()).getExecutableFileName();
 	}
 	
 	@Override
