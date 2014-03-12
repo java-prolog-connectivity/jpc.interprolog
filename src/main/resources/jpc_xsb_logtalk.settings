@@ -3,8 +3,8 @@ engines: [
   {
     "id": "xsb_logtalk",
     "categoryNames": [""],
-    "factory": "org.jpc.engine.interprolog.InterPrologXsbDriver",
-    "profile": "org.jpc.engine.profile.LogtalkEngineProfile"
+    "factoryClass": "org.jpc.engine.interprolog.InterPrologXsbDriver",
+    "profileClass": "org.jpc.engine.profile.LogtalkEngineProfile"
   }
 ]
 }
