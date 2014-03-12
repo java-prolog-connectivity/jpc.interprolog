@@ -1,5 +1,6 @@
 package org.jpc.engine.interprolog;
 
+import org.jpc.engine.prolog.driver.PrologEngineFactory;
 import org.jpc.util.JpcPreferences;
 import org.jpc.util.engine.supported.Swi;
 
@@ -25,8 +26,13 @@ public class InterPrologSwiDriver extends InterPrologDriver {
 	}
 	
 	@Override
-	protected InterPrologEngine basicCreatePrologEngine() {
-		return new InterPrologSwiYapEngine(new SWISubprocessEngine(getExecutableFullPath()));
+	protected PrologEngineFactory<InterPrologEngine> defaultBasicFactory() {
+		return new PrologEngineFactory<InterPrologEngine>() {
+			@Override
+			public InterPrologEngine createPrologEngine() {
+				return new InterPrologSwiYapEngine(new SWISubprocessEngine(getExecutableFullPath()));
+			}
+		};
 	}
 
 	@Override

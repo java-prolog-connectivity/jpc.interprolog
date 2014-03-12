@@ -1,5 +1,6 @@
 package org.jpc.engine.interprolog;
 
+import static org.jpc.engine.prolog.ThreadModel.SINGLE_THREADED;
 import static org.jpc.util.JpcPreferences.JPC_ANON_VAR_PREFIX;
 
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import org.jpc.Jpc;
 import org.jpc.engine.prolog.AbstractPrologEngine;
+import org.jpc.engine.prolog.ThreadModel;
 import org.jpc.error.PrologParsingException;
 import org.jpc.term.Atom;
 import org.jpc.term.Term;
@@ -24,7 +26,7 @@ public abstract class InterPrologEngine extends AbstractPrologEngine {
 	
 	private PrologEngine wrappedEngine;
 	
-	public InterPrologEngine(PrologEngine wrappedEngine) {
+	InterPrologEngine(PrologEngine wrappedEngine) {
 		this.wrappedEngine = wrappedEngine;
 	}
 
@@ -43,8 +45,8 @@ public abstract class InterPrologEngine extends AbstractPrologEngine {
 	}
 	
 	@Override
-	public boolean isMultiThreaded() {
-		return false;
+	public ThreadModel threadModel() {
+		return SINGLE_THREADED;
 	}
 	
 	@Override
