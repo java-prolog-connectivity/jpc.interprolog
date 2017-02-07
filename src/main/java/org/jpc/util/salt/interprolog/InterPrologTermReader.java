@@ -1,4 +1,4 @@
-package org.jpc.salt.interprolog;
+package org.jpc.util.salt.interprolog;
 
 import static org.jpc.engine.prolog.PrologConstants.CONS_FUNCTOR;
 import static org.jpc.engine.prolog.PrologConstants.NIL_SYMBOL;
@@ -6,8 +6,8 @@ import static org.jpc.engine.prolog.PrologConstants.NIL_SYMBOL;
 import java.util.List;
 
 import org.jpc.JpcException;
-import org.jpc.salt.TermContentHandler;
-import org.jpc.salt.TermReader;
+import org.jpc.util.salt.TermContentHandler;
+import org.jpc.util.salt.TermReader;
 import org.jpc.term.interprolog.InterPrologTermWrapper;
 
 public class InterPrologTermReader extends TermReader {

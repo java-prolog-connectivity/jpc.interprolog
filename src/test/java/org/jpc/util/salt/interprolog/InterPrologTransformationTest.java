@@ -1,11 +1,11 @@
-package org.jpc.salt.interprolog;
+package org.jpc.util.salt.interprolog;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 
-import org.jpc.salt.JpcTermWriter;
+import org.jpc.util.salt.JpcTermStreamer;
 import org.jpc.term.Atom;
 import org.jpc.term.Compound;
 import org.jpc.term.Float;
@@ -27,21 +27,21 @@ public class InterPrologTransformationTest {
 	
 	@Test
 	public void testInterPrologToInterProlog() {
-		InterPrologTermWriter termWriter = new InterPrologTermWriter();
+		InterPrologTermStreamer termWriter = new InterPrologTermStreamer();
 		new InterPrologTermReader(t1InterPrologWrapper, termWriter).read();
 		assertEquals(t1InterPrologWrapper, termWriter.getFirst());
 	}
 	
 	@Test
 	public void testInterPrologToJpc() {
-		JpcTermWriter jpcTermWriter = new JpcTermWriter();
+		JpcTermStreamer jpcTermWriter = new JpcTermStreamer();
 		new InterPrologTermReader(t1InterPrologWrapper, jpcTermWriter).read();
 		assertEquals(t1Jpc, jpcTermWriter.getFirst());
 	}
 	
 	@Test
 	public void testJpcToInterProlog() {
-		InterPrologTermWriter interPrologTermWriter = new InterPrologTermWriter();
+		InterPrologTermStreamer interPrologTermWriter = new InterPrologTermStreamer();
 		t1Jpc.read(interPrologTermWriter);
 		assertEquals(t1InterPrologWrapper, interPrologTermWriter.getFirst());
 	}

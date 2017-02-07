@@ -1,21 +1,21 @@
 package org.jpc.engine.interprolog;
 
-import org.jpc.salt.JpcTermWriter;
-import org.jpc.salt.interprolog.InterPrologTermReader;
-import org.jpc.salt.interprolog.InterPrologTermWriter;
+import org.jpc.util.salt.JpcTermStreamer;
+import org.jpc.util.salt.interprolog.InterPrologTermReader;
+import org.jpc.util.salt.interprolog.InterPrologTermStreamer;
 import org.jpc.term.Term;
 import org.jpc.term.interprolog.InterPrologTermWrapper;
 
 public class InterPrologBridge {
 
 	public static InterPrologTermWrapper fromJpcToInterProlog(Term term) {
-		InterPrologTermWriter interPrologTermWriter = new InterPrologTermWriter();
+		InterPrologTermStreamer interPrologTermWriter = new InterPrologTermStreamer();
 		term.read(interPrologTermWriter);
 		return interPrologTermWriter.getFirst();
 	}
 	
 	public static Term fromInterPrologToJpc(InterPrologTermWrapper term) {
-		JpcTermWriter jpcTermWriter = new JpcTermWriter();
+		JpcTermStreamer jpcTermWriter = new JpcTermStreamer();
 		new InterPrologTermReader(term, jpcTermWriter).read();
 		return jpcTermWriter.getFirst();
 	}

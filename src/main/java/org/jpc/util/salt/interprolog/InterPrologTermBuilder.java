@@ -1,9 +1,9 @@
-package org.jpc.salt.interprolog;
+package org.jpc.util.salt.interprolog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jpc.salt.TermBuilder;
+import org.jpc.util.salt.TermBuilder;
 import org.jpc.term.interprolog.InterPrologTermWrapper;
 
 import com.declarativa.interprolog.TermModel;
