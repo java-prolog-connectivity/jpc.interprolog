@@ -6,11 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.jpc.term.Term;
 import org.jpc.term.interprolog.InterPrologTermWrapper;
 import org.jpc.util.salt.TermBuilder;
 import org.jpc.util.salt.TermContentHandler;
-import org.jpc.util.salt.TermProcessor;
+import org.jpc.util.termprocessor.GenericTermProcessor;
 import org.jpc.util.salt.TermStreamer;
 
 import com.declarativa.interprolog.TermModel;
@@ -23,7 +22,7 @@ public class InterPrologTermStreamer extends TermStreamer<InterPrologTermWrapper
 	private Map<Integer, String> variablesNames; //creating the map with the code of the variable instead (until the bug in VariableNode is fixed)
 	private int varIdCounter;
 	
-	public InterPrologTermStreamer(TermProcessor<InterPrologTermWrapper> termProcessor) {
+	public InterPrologTermStreamer(GenericTermProcessor<InterPrologTermWrapper> termProcessor) {
 		super(termProcessor);
 		resetVariablesNames();
 	}
