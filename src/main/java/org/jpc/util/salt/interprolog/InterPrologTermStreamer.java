@@ -1,15 +1,15 @@
 package org.jpc.util.salt.interprolog;
 
-import static org.jpc.engine.prolog.PrologConstants.ANONYMOUS_VAR_NAME;
+import static org.jpc.engine.prolog.PrologConstants.UNDERSCORE_VAR_NAME;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Consumer;
 
 import org.jpc.term.interprolog.InterPrologTermWrapper;
 import org.jpc.util.salt.TermBuilder;
 import org.jpc.util.salt.TermContentHandler;
-import org.jpc.util.termprocessor.GenericTermProcessor;
 import org.jpc.util.salt.TermStreamer;
 
 import com.declarativa.interprolog.TermModel;
@@ -22,7 +22,7 @@ public class InterPrologTermStreamer extends TermStreamer<InterPrologTermWrapper
 	private Map<Integer, String> variablesNames; //creating the map with the code of the variable instead (until the bug in VariableNode is fixed)
 	private int varIdCounter;
 	
-	public InterPrologTermStreamer(GenericTermProcessor<InterPrologTermWrapper> termProcessor) {
+	public InterPrologTermStreamer(Consumer<InterPrologTermWrapper> termProcessor) {
 		super(termProcessor);
 		resetVariablesNames();
 	}
@@ -71,7 +71,7 @@ public class InterPrologTermStreamer extends TermStreamer<InterPrologTermWrapper
 	@Override
 	public TermContentHandler startVariable(String name) {
 		VariableNode variable;
-		if(name.equals(ANONYMOUS_VAR_NAME)) {
+		if(name.equals(UNDERSCORE_VAR_NAME)) {
 			variable = createVariable(name);
 		} else {
 			variable = getVariable(name);

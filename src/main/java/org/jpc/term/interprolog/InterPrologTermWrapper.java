@@ -97,7 +97,7 @@ public class InterPrologTermWrapper {
 		VariableNode variableNode = (VariableNode)termModel.node;
 		Integer varCode = getVariableCode(variableNode);
 		String variableName = variablesNames.get(varCode);
-		return variableName!=null?variableName:PrologConstants.ANONYMOUS_VAR_NAME;
+		return variableName!=null?variableName:PrologConstants.UNDERSCORE_VAR_NAME;
 	}
 	
 	public List<InterPrologTermWrapper> getArgs() {
